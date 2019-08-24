@@ -21,10 +21,14 @@ def index():
     selectedDeckWhite=selectedDeck['white']
     selectedDeckIcon=selectedDeck['icon']
     selectedDeckBlackIndex=random.choice(selectedDeckBlack)
-    selectedDeckWhiteIndex=random.choice(selectedDeckWhite)
     
-    blackCard=blackCards[selectedDeckBlackIndex]['text']
-    whiteCard=whiteCards[selectedDeckWhiteIndex]
+    blackCard=blackCards[selectedDeckBlackIndex]
+    blackCardPick=blackCard['pick']        
+    whiteCard=[]
+    while blackCardPick > 0:
+        selectedDeckWhiteIndex=random.choice(selectedDeckWhite)
+        whiteCard.append(whiteCards[selectedDeckWhiteIndex])
+        blackCardPick-=1
     
     
     
@@ -33,7 +37,7 @@ def index():
         'name': selectedDeckName,
         'blackCard': blackCard,
         'whiteCard': whiteCard, 
-        'done': True
+        'done': blackCardPick
     }
 ]
     
