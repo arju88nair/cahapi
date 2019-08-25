@@ -9,6 +9,10 @@ def index():
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
     json_url = os.path.join(SITE_ROOT, "", "cards.json")
     data = json.load(open(json_url))
+    payload=payloadBuilder(data)
+    return jsonify(payload)
+    
+def payloadBuilder(data):
     decks=data['order']
     blackCards=data['blackCards']
     whiteCards=data['whiteCards']
@@ -39,11 +43,9 @@ def index():
         'whiteCard': whiteCard, 
         'done': blackCardPick
     }
-]
+    ]
+    return payload
     
-    return jsonify(payload)
-    
-
 if __name__ == "__main__":
     app.run(debug=True)
     app.run(host='0.0.0.0')
