@@ -20,9 +20,6 @@ def index():
 
 
 
-
-    
-def payloadBuilder(data):
 """[Method to buold the payload]
     
     Arguments:
@@ -30,21 +27,27 @@ def payloadBuilder(data):
     
     Returns:
         [payload] -- [json object]
-    """
+"""
     
+def payloadBuilder(data):
+    
+    # Getting the black and white cards
     decks=data['order']
     blackCards=data['blackCards']
     whiteCards=data['whiteCards']
     
+    # Selecting a deck randomly
     deck=random.choice(decks)
     selectedDeck=data[deck]
     
+    # Selecting the object for the selected deck name
     selectedDeckName=selectedDeck['name']
     selectedDeckBlack=selectedDeck['black']
     selectedDeckWhite=selectedDeck['white']
     selectedDeckIcon=selectedDeck['icon']
     selectedDeckBlackIndex=random.choice(selectedDeckBlack)
     
+    # Picking white and black card accoring to the pick and the selected deck
     blackCard=blackCards[selectedDeckBlackIndex]
     blackCardPick=blackCard['pick']        
     whiteCard=[]
@@ -53,17 +56,18 @@ def payloadBuilder(data):
         whiteCard.append(whiteCards[selectedDeckWhiteIndex])
         blackCardPick-=1
     
-    
-    
     payload= [
     {
         'name': selectedDeckName,
         'blackCard': blackCard,
         'whiteCard': whiteCard, 
-        'done': blackCardPick
+        'done': selectedDeckIcon
     }
     ]
+    
     return payload
+    
+    
     
 if __name__ == "__main__":
     app.run(debug=True)
