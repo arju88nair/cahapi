@@ -20,7 +20,7 @@ def index():
 
 
 
-"""[Method to buold the payload]
+"""[Method to build the payload]
     
     Arguments:
         data {[json]}
@@ -59,9 +59,9 @@ def payloadBuilder(data):
     payload= [
     {
         'name': selectedDeckName,
-        'blackCard': blackCard,
+        'blackCard': blackCard['text'],
         'whiteCard': whiteCard, 
-        'done': selectedDeckIcon
+        'icon': selectedDeckIcon
     }
     ]
     
