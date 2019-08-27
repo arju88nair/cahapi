@@ -1,6 +1,7 @@
 .cardContainer {
-    /* overflow:hidden;*/
+    overflow: hidden;
     margin-left: 10%;
+    border: thin solid red
 }
 
 .card {
