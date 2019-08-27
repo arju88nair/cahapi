@@ -1,40 +1,50 @@
-
-.cardContainer{
-  overflow:hidden;
-  margin-left:10%;
+.cardContainer {
+    /* overflow:hidden;*/
+    margin-left: 10%;
 }
 
-.card{
-  /* Card Sizing */
-  width: 2.5in;
-  height: 4in;
-  border-radius: .25in;
-  
-  /* Display Properties */
-  float: left;
-  margin: 10px;
+.card {
+    /* Card Sizing */
+    width: 2.5in;
+    height: 4in;
+    border-radius: .25in;
+    /* Display Properties */
+    border: 1.6px solid black;
+    float: left;
+    margin: 10px;
+    -webkit-box-shadow: -22px 20px 20px -11px rgba(0, 0, 0, 0.63);
+    -moz-box-shadow: -22px 20px 20px -11px rgba(0, 0, 0, 0.63);
+    box-shadow: -22px 20px 20px -11px rgba(0, 0, 0, 0.63);
 }
 
-.dark{
-  /* Color information */
-  border: 3px solid black;
-  color: white;
-  background: black;
+.dark {
+    /* Color information */
+    color: white;
+    background: black;
+    -ms-transform: rotate(-20deg);
+    /* IE 9 */
+    -webkit-transform: rotate(-20deg);
+    /* Safari 3-8 */
+    transform: rotate(-20deg);
 }
 
-.light{
-  /* Color information */
-  border: 3px solid black;
-  color: black;
-  background: white;
+.light {
+    /* Color information */
+    color: black;
+    background: white;
+    -ms-transform: rotate(20deg);
+    /* IE 9 */
+    -webkit-transform: rotate(20deg);
+    /* Safari 3-8 */
+    transform: rotate(20deg);
+    margin-left: -6%
 }
 
-.text{
-  /*font information*/
-  font-weight: bolder;
-  font-size: 26px;
-  padding-left:7%;
-  padding-right:7%;
-  word-wrap: break-word;
+.text {
+    /*font information*/
+    font-weight: bolder;
+    font-size: 26px;
+    padding-left: 7%;
+    padding-right: 7%;
+    word-wrap: break-word;
 }
-
