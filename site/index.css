@@ -29,6 +29,19 @@
     transform: rotate(-20deg);
 }
 
+.light2 {
+    /* Color information */
+    color: black;
+    background: white;
+    -ms-transform: rotate(20deg);
+    /* IE 9 */
+    -webkit-transform: rotate(20deg);
+    /* Safari 3-8 */
+    transform: rotate(42deg);
+    margin-left: -4%;
+    margin-top: 7%;
+}
+
 .light {
     /* Color information */
     color: black;
@@ -48,4 +61,48 @@
     padding-left: 7%;
     padding-right: 7%;
     word-wrap: break-word;
+}
+
+.navbar {
+    background-color: #232323 !important
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+button:focus {
+    outline: none;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 2rem
+}
+
+.btn {
+    border: 1.5px solid white;
+    border-radius: 0px;
+    border-color: white;
+    color: white;
+}
+
+.button {
+    position: relative;
+    top: 50%;
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.desc {
+    position: relative;
+}
+
+.title {
+    font-size: 4em;
+    font-weight: bold;
+    line-height: 0.8;
 }

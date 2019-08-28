@@ -13,77 +13,51 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <script src="index.js"></script>
     <style>
-        .navbar {
-            background-color: #232323 !important
-        }
-        
-        body {
-            font-family: 'Open Sans', sans-serif;
-        }
-        
-        button:focus {
-            outline: none;
-        }
-        
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 2rem
-        }
-        
-        .btn {
-            border: 1.5px solid black;
-            float: right;
-            border-radius: 0px;
-            border-color: black;
-            color: black;
-        }
-        
-        .button {
-            position: relative;
-            top: 50%;
-        }
-        
-        .btn:hover {
-            background-color: black;
-            color: white;
-        }
-        
-        .desc {
-            position: relative;
-            top: 18%
-        }
+
     </style>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand  mx-auto" href="#">Cards Against Humanity - API</a>
-    </nav>
-
-    <div class="container" style="margin-top:30px">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-8 ">
-                <div class='dark card'>
-                    <p class='text'>Blah?</p>
+            <div class="col-lg-8 " style="background-color: #232323 !important;color:white;">
+                <div class="cards d-flex justify-content-center" style="margin-top: 4%;height: 500px;transform: rotate(-9deg);">
+                    <div class='dark card'>
+                        <p class='text'>Blah?</p>
+                    </div>
+                    <div class='light card'>
+                        <p class='text'>Blah blah.</p>
+                    </div>
+                    <div class='light2 card'>
+                        <p class='text'>Blah blah.</p>
+                    </div>
+
                 </div>
 
-                <div class='light card'>
-                    <p class='text'>Blah blah.</p>
-                </div>
-                <div class="button">
-                    <button type="button" class="btn btn-basic" onclick="doCall()">Play the card</button>
-                </div>
             </div>
 
-            <div class="col-lg-4" style="background-color: #232323 !important;color:white">
-                <div class="desc">
-                    <h2>
-                        Cards Against Humanity
-                    </h2>
+            <div class="col-lg-4 d-flex justify-content-center" style="background-color: #232323 !important;color:white">
+                <div class="desc align-self-center">
+                    <div class="title">
+                        <p>
+                            Cards
+                        </p>
+                        <p>
+                            Against
+                        </p>
+                        <p>
+                            Humanity
+                        </p>
+                    </div>
+                    <br>
+
                     <p>A party game for horrible people. Now an API</p>
+                    <br>
+                    <div class="button d-flex justify-content-center">
+                        <button type="button" class="btn btn-basic" onclick="doCall()">Play the card</button>
+                    </div>
                 </div>
+
             </div>
         </div>
 
