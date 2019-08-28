@@ -3,8 +3,11 @@ import random
 from flask import Flask,render_template, url_for, json,jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 limiter = Limiter(
     app,
     key_func=get_remote_address,
@@ -18,6 +21,7 @@ Returns:
     [json] 
 """
 @app.route("/")
+@cross_origin()
 def index():
     
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))

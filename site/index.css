@@ -51,7 +51,8 @@
     -webkit-transform: rotate(20deg);
     /* Safari 3-8 */
     transform: rotate(20deg);
-    margin-left: -6%
+    margin-left: -6%;
+    display: none;
 }
 
 .text {
@@ -102,9 +103,9 @@ button:focus {
 }
 
 .title {
-    font-size: 4em;
-    font-weight: bold;
-    line-height: 0.8;
+    font-size: 4em !important;
+    font-weight: bold !important;
+    line-height: 0.8 !important;
 }
 
 @keyframes rotate {
