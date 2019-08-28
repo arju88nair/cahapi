@@ -12,3 +12,12 @@ function doCall() {
         }
     });
 };
+
+$(document).ready(function() {
+    $('.dark.card.animated').deAnimate({
+        trigger: 'click',
+        classIn: 'fadeInDown',
+        parallel: false
+    });
+
+})
