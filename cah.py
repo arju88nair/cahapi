@@ -80,6 +80,16 @@ def payloadBuilder(data):
     
     return payload
     
+
+"""[For fetching white cards ]
+
+Returns:
+    [json] 
+"""
+@app.route("/fetchWhite")
+@cross_origin()
+def fetchWhite():
+    return "ff"  
     
     
 if __name__ == "__main__":
