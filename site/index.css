@@ -55,6 +55,19 @@
     display: none;
 }
 
+.light3 {
+    /* Color information */
+    color: black;
+    background: white;
+    -ms-transform: rotate(20deg);
+    /* IE 9 */
+    -webkit-transform: rotate(20deg);
+    /* Safari 3-8 */
+    transform: rotate(20deg);
+    margin-left: -6%;
+    display: none;
+}
+
 .text {
     /*font information*/
     font-weight: bolder;
