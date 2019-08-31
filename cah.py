@@ -60,7 +60,6 @@ def payloadBuilder(data):
     selectedDeckName = selectedDeck['name']
     selectedDeckBlack = selectedDeck['black']
     selectedDeckWhite = selectedDeck['white']
-    selectedDeckIcon = selectedDeck['icon']
     selectedDeckBlackIndex = random.choice(selectedDeckBlack)
 
     # Picking white and black card accoring to the pick and the selected deck
@@ -77,7 +76,8 @@ def payloadBuilder(data):
             'name': selectedDeckName,
             'blackCard': blackCard['text'],
             'whiteCard': whiteCard,
-            'index': selectedDeckBlackIndex
+            'index': selectedDeckBlackIndex,
+            'deck':deck
         }
     ]
 
@@ -92,10 +92,19 @@ Returns:
 @app.route("/fetchWhite", methods=['POST'])
 @cross_origin()
 def fetchWhite():
-    data = request.get_json()
-    deck=data['deck']
+    postData = request.get_json()
+    deck=postData['deck']
+    cards=postData['cards']
+    selectedDeck = data[deck]
+    whiteCardDeck=selectedDeck['white']
+    whiteCards=[]
+    while cards > 0:
+        whiteCard = random.choice(whiteCardDeck)
+        whiteCards.append(whiteCard)
+        cards -= 1
     
-    return jsonify(data)
+    postData['white']=whiteCards
+    return jsonify(postData)
 
 
 if __name__ == "__main__":
