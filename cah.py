@@ -6,6 +6,7 @@ from flask_limiter.util import get_remote_address
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 limiter = Limiter(
