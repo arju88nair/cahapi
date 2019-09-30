@@ -67,7 +67,12 @@ def payloadBuilder(data):
     blackCard = blackCards[selectedDeckBlackIndex]
     blackCardPick = blackCard['pick']
     whiteCard = []
-    while blackCardPick > 0:
+    # while blackCardPick > 0:
+    #     selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
+    #     whiteCard.append(whiteCards[selectedDeckWhiteIndex])
+    #     blackCardPick -= 1
+    
+    if blackCardPick == 1:
         selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
         whiteCard.append(whiteCards[selectedDeckWhiteIndex])
         blackCardPick -= 1
