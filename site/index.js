@@ -1,6 +1,4 @@
 function doCall() {
-
-
     $(".card").fadeOut(500, function() {
         $.ajax({
             url: "http://127.0.0.1:5000/",
@@ -25,6 +23,8 @@ function doCall() {
             }
         });
     });
-
-
 };
+
+$(document).ready(function() {
+    doCall();
+})

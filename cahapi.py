@@ -20,8 +20,8 @@ limiter = Limiter(
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 json_url = os.path.join(SITE_ROOT, "", "cards.json")
 data = json.load(open(json_url))
-    
-    
+
+
 """[Default route for the main endpoint returning json ]
 
 Returns:
@@ -30,9 +30,6 @@ Returns:
 @app.route("/")
 @cross_origin()
 def index():
-
-   
-
     payload = payloadBuilder(data)
     return jsonify(payload)
 
@@ -72,26 +69,23 @@ def payloadBuilder(data):
     #     selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
     #     whiteCard.append(whiteCards[selectedDeckWhiteIndex])
     #     blackCardPick -= 1
-    
+
     if blackCardPick == 1:
         selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
         whiteCard.append(whiteCards[selectedDeckWhiteIndex])
         payload = [
-        {
-            'name': selectedDeckName,
-            'blackCard': cleanhtml(blackCard['text']),
-            'whiteCard': whiteCard,
-            'index': selectedDeckBlackIndex,
-            'deck':deck,
-            'stuff':blackCard
-        }
-    ]
+            {
+                'name': selectedDeckName,
+                'blackCard': cleanhtml(blackCard['text']),
+                'whiteCard': whiteCard,
+                'index': selectedDeckBlackIndex,
+                'deck':deck,
+                'stuff':blackCard
+            }
+        ]
         return payload
 
-    
         # blackCardPick -= 1
-
-    
 
 
 """[For fetching white cards ]
@@ -103,18 +97,19 @@ Returns:
 @cross_origin()
 def fetchWhite():
     postData = request.get_json()
-    deck=postData['deck']
-    cards=postData['cards']
+    deck = postData['deck']
+    cards = postData['cards']
     selectedDeck = data[deck]
-    whiteCardDeck=selectedDeck['white']
-    whiteCards=[]
+    whiteCardDeck = selectedDeck['white']
+    whiteCards = []
     while cards > 0:
         whiteCard = random.choice(whiteCardDeck)
         whiteCards.append(whiteCard)
         cards -= 1
-    
-    postData['white']=whiteCards
+
+    postData['white'] = whiteCards
     return jsonify(postData)
+
 
 """[Removing HTML tags]
 
@@ -122,11 +117,13 @@ Returns:
     [String] -- [Cleaned text]
 """
 
+
 def cleanhtml(raw_html):
   cleanr = re.compile('<.*?>')
   cleantext = re.sub(cleanr, '', raw_html)
   return cleantext
 
+
 if __name__ == "__main__":
     app.debug = True
-    app.run(host = '0.0.0.0',port=5000)
+    app.run(host='0.0.0.0', port=5000)
