@@ -4,6 +4,7 @@ from flask import Flask, render_template, url_for, json, jsonify, request
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_cors import CORS, cross_origin
+import re
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -75,19 +76,22 @@ def payloadBuilder(data):
     if blackCardPick == 1:
         selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
         whiteCard.append(whiteCards[selectedDeckWhiteIndex])
-        blackCardPick -= 1
-
-    payload = [
+        payload = [
         {
             'name': selectedDeckName,
-            'blackCard': blackCard['text'],
+            'blackCard': cleanhtml(blackCard['text']),
             'whiteCard': whiteCard,
             'index': selectedDeckBlackIndex,
-            'deck':deck
+            'deck':deck,
+            'stuff':blackCard
         }
     ]
+        return payload
 
-    return payload
+    
+        # blackCardPick -= 1
+
+    
 
 
 """[For fetching white cards ]
@@ -112,6 +116,16 @@ def fetchWhite():
     postData['white']=whiteCards
     return jsonify(postData)
 
+"""[Removing HTML tags]
+
+Returns:
+    [String] -- [Cleaned text]
+"""
+
+def cleanhtml(raw_html):
+  cleanr = re.compile('<.*?>')
+  cleantext = re.sub(cleanr, '', raw_html)
+  return cleantext
 
 if __name__ == "__main__":
     app.debug = True
