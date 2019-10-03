@@ -25,26 +25,27 @@ data = json.load(open(json_url))
 """[Default route for the main endpoint returning json ]
 
 Returns:
-    [json] 
+    [json]
 """
 @app.route("/")
 @cross_origin()
 def index():
-    payload = payloadBuilder(data)
+    payload = payloadBuilder(data, 'multiple')
     return jsonify(payload)
 
 
 """[Method to build the payload]
-    
+
     Arguments:
         data {[json]}
-    
+
     Returns:
         [payload] -- [json object]
 """
 
 
-def payloadBuilder(data):
+def payloadBuilder(data, cards):
+    
 
     # Getting the black and white cards
     decks = data['order']
@@ -65,15 +66,19 @@ def payloadBuilder(data):
     blackCard = blackCards[selectedDeckBlackIndex]
     blackCardPick = blackCard['pick']
     whiteCard = []
-    # while blackCardPick > 0:
-    #     selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
-    #     whiteCard.append(whiteCards[selectedDeckWhiteIndex])
-    #     blackCardPick -= 1
 
-    if blackCardPick == 1:
-        selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
-        whiteCard.append(whiteCards[selectedDeckWhiteIndex])
-        payload = [
+    if cards == 'multiple':
+        while blackCardPick > 0:
+            selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
+            whiteCard.append(whiteCards[selectedDeckWhiteIndex])
+            blackCardPick -= 1
+
+    else:
+        if blackCardPick == 1:
+            selectedDeckWhiteIndex = random.choice(selectedDeckWhite)
+            whiteCard.append(whiteCards[selectedDeckWhiteIndex])
+
+    payload = [
             {
                 'name': selectedDeckName,
                 'blackCard': cleanhtml(blackCard['text']),
@@ -82,10 +87,9 @@ def payloadBuilder(data):
                 'deck':deck,
                 'stuff':blackCard
             }
-        ]
-        return payload
+    ]
+    return payload
 
-        # blackCardPick -= 1
 
 
 """[For fetching white cards ]
@@ -119,9 +123,21 @@ Returns:
 
 
 def cleanhtml(raw_html):
-  cleanr = re.compile('<.*?>')
-  cleantext = re.sub(cleanr, '', raw_html)
-  return cleantext
+    cleanr = re.compile('<.*?>')
+    cleantext = re.sub(cleanr, '', raw_html)
+    return cleantext
+
+
+"""[Route for the returning cards with one whitecard ]
+
+Returns:
+    [json] 
+"""
+@app.route("/")
+@cross_origin()
+def singleCard():
+    payload = payloadBuilder(data, 'single')
+    return jsonify(payload)
 
 
 if __name__ == "__main__":
